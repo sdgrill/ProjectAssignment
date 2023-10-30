@@ -7,11 +7,35 @@
 
     <div class="container">
       <h1>Login Page</h1>
-    <button class="btn btn-primary">Login</button>
 
-  </div>
-      
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+      </form>
+
     </div>
+
     <% include ./partials/scripts %>
+    <script>
+      function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Perform your login logic here
+        // You may want to make an AJAX request to a server-side endpoint for authentication
+
+        // Example: Just alerting the username and password for demonstration purposes
+        alert("Username: " + username + "\nPassword: " + password);
+      }
+    </script>
   </body>
 </html>
