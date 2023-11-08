@@ -2,12 +2,70 @@
 <html>
   <%- include ../partials/head %>
 
+<head>
+  <link rel="style.css" type="text/css" href="C:\Users\thoma\OneDrive\Desktop\ILMP\ProjectAssignment\starter\public\stylesheets\style.css">
+</head>
+
   <body>
     <% include ../partials/navbar %>
 
     <div class="container">
+
       <h1>Create Patient</h1>
       
+    <form method= "post" action="/patients/create">
+
+      <div class="form-group">
+    <label for="creatorId">Creator ID:</label>
+    <input type="text" id="creatorId" class="input-field" name="creatorId" required>
+      
+
+    <label for="creatorName">Creator Name:</label>
+    <input type="text" id="creatorName" class="input-field" name="creatorName" required>
+      
+    <label for="createDate">Create Date:</label>
+    <input type="date" id="createDate" name="createDate" required>
+  
+      </div>
+
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+
+    <label for="birthdate">Birthdate:</label>
+    <input type="date" id="birthdate" name="birthdate" required>
+
+    <label for="zipcode">Zipcode:</label>
+    <input type="text" id="zipcode" name="zipcode" required>
+
+    <label for="state">State:</label>
+    <input type="text" id="state" name="state" required>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+
+    <label for="insuranceType">Insurance Type:</label>
+    <input type="text" id="insuranceType" name="insuranceType" required>
+
+    <label for="testType">Test Type:</label>
+    <input type="text" id="testType" name="testType" required>
+
+    <label for="doctorService">Doctor Service:</label>
+    <input type="text" id="doctorService" name="doctorService" required>
+
+    <label for="labName">Lab Name:</label>
+    <input type="text" id="labName" name="labName" required>
+
+    <label for="sampleStatus">Sample Status:</label>
+    <input type="text" id="sampleStatus" name="sampleStatus" required>
+
+    <button type="submit">Submit</button>
+
+      </form>
       
     </div>
     <% include ../partials/scripts %>
