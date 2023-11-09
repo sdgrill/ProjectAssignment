@@ -6,10 +6,15 @@
     <% include ../partials/navbar %>
 
     <div class="container">
-      <h1>Patient Details</Details></h1>
-      <table id="patientTable" class="table table-striped table-bordered">
-        <thread>
-          <tr>
+      
+        <h1>Patient Details</Details></h1>
+
+        <table id="patientTable" class="table table-striped table-bordered">
+          <thead>
+            <tr>
+            <th>Creator ID</th>
+            <th>Creator Name</th>
+            <th>Create Date</th>
             <th>FirstName</th>
             <th>LastName</th>
             <th>State</th>
@@ -19,13 +24,19 @@
             <th>Lab Name</th>
             <th>Doctor Service</th>
             <th>Insurance Type</th>
-            <th>Sample Status</th>
             <th>Test Type</th>
-          </tr>
-        </thread>
+            <th>Sample Status</th>
+            <th>Outstanding Action Items</th>
+            <th>Edit Data or Delete Data</th>
+            </tr>
+          </thead>
 
+        <tbody>
         <% for (let i = 0; i < patientsData.length; i++) { %>
           <tr>
+            <td><%= patientsData[i].creatorId %></td>
+            <td><%= patientsData[i].creatorName %></td>
+            <td><%= patientsData[i].createDate %></td>
             <td><%= patientsData[i].firstName %></td>
             <td><%= patientsData[i].lastName %></td>
             <td><%= patientsData[i].state %></td>
@@ -35,17 +46,29 @@
             <td><%= patientsData[i].labName %></td>
             <td><%= patientsData[i].doctorService %></td>
             <td><%= patientsData[i].insuranceType %></td>
-            <td><%= patientsData[i].sampleStatus %></td>
             <td><%= patientsData[i].testType %></td>
+            <td><%= patientsData[i].sampleStatus %></td>
+            <td><%= patientsData[i].outstandingActionItems %></td>
             <td>
-              <a href="/patients/delete?_id=<%=patientsData[i]._id%>" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+              <a href="/patients/update?_id=<%=patientsData[i]._id%>" class="btn btn-warning btn-sm">Edit</a>
+              <a href="/patients/delete?_id=<%=patientsData[i]._id%>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
             </td>
           </tr>
           <% } %>
-        
+        </tbody>
       </table>
       
     </div>
     <% include ../partials/scripts %>
+
+    <script>
+      $(document).ready( function () {
+        $('#patientTable').DataTable({
+          responsive:true
+        });
+      });
+  </script>
+
   </body>
+
 </html>

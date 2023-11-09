@@ -2,71 +2,129 @@
 <html>
   <%- include ../partials/head %>
 
-<head>
-  <link rel="style.css" type="text/css" href="C:\Users\thoma\OneDrive\Desktop\ILMP\ProjectAssignment\starter\public\stylesheets\style.css">
-</head>
 
   <body>
     <% include ../partials/navbar %>
 
-    <div class="container">
-
+    <div class="container mt-5">
+      <div class="col-md-8 offset-md-2">
       <h1>Create Patient</h1>
       
-    <form method= "post" action="/patients/create">
+    <form method= "post" action="/patients/create" class="row g-3">
 
-      <div class="form-group">
+      <div class="col-md-6 mt-3">
     <label for="creatorId">Creator ID:</label>
-    <input type="text" id="creatorId" class="input-field" name="creatorId" required>
-      
-
-    <label for="creatorName">Creator Name:</label>
-    <input type="text" id="creatorName" class="input-field" name="creatorName" required>
-      
-    <label for="createDate">Create Date:</label>
-    <input type="date" id="createDate" name="createDate" required>
-  
+    <input type="text" id="creatorId"  name="creatorId" class="form-control" required>
       </div>
 
+      <div class="col-md-6 mt-3">
+    <label for="creatorName">Creator Name:</label>
+    <input type="text" id="creatorName"  name="creatorName" class="form-control" required>
+      </div>
 
+      <div class="col-md-6 mt-3">
+    <label for="createDate">Create Date:</label>
+    <input type="date" id="createDate" name="createDate" class="form-control" required>
+      </div>
+
+      <div class="col-md-6 mt-3">
     <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" required>
+    <input type="text" id="firstName" name="firstName" class="form-control" required>
+      </div>
 
+      <div class="col-md-6 mt-3">
     <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" required>
+    <input type="text" id="lastName" name="lastName" class="form-control" required>
+      </div>
 
+      <div class="col-md-6 mt-3">
     <label for="birthdate">Birthdate:</label>
-    <input type="date" id="birthdate" name="birthdate" required>
+    <input type="date" id="birthdate" name="birthdate" class="form-control" required>
+      </div>
 
+      <div class="col-md-6 mt-3">
     <label for="zipcode">Zipcode:</label>
-    <input type="text" id="zipcode" name="zipcode" required>
+    <input type="text" id="zipcode" name="zipcode" class="form-control" required>
+      </div>
 
+      <div class="col-md-6 mt-3">
     <label for="state">State:</label>
-    <input type="text" id="state" name="state" required>
+    <input type="text" id="state" name="state" class="form-control" required>
+      </div>
 
+      <div class="col-md-6 mt-3">
     <label for="phoneNumber">Phone Number:</label>
-    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" required>
+      </div>
+
+      <div class="col-md-6 mt-3">
+        <label for="insuranceType">Insurance Type:</label>
+        <select id="insuranceType" name="insuranceType" class="form-control" required>
+            <option value="">Select an option</option>
+            <option value="Medicare">Medicare</option>
+            <option value="Medicaid">Medicaid</option>
+            <option value="Private">Private</option>
+        </select>
+    </div>
+    
+    <div class="col-md-6 mt-3">
+      <label for="labName">Lab Name:</label>
+      <input type="text" id="labName" name="labName" class="form-control" required>
+        </div>
+
+    <div class="col-md-6 mt-3">
+      <label for="testType">Test Type:</label>
+      <select id="testType" name="testType" class="form-control" required>
+          <option value="">Select an option</option>
+          <option value="Cardio">Cardio</option>
+          <option value="PGX">PGX</option>
+          <option value="CGX">CGX</option>
+      </select>
+  </div>
+  
+    
+    
+
+      <div class="col-md-6 mt-3">
+        <label for="doctorService">Doctor Service:</label>
+        <input type="text" id="doctorService" name="doctorService" class="form-control" required>
+          </div>
+    
+      <div class="col-md-6 mt-3">
+        <label for="sampleStatus">Sample Status:</label>
+        <select id="sampleStatus" name="sampleStatus" class="form-control" required>
+          <option value="">Select Sample Status</option>
+          <option value="Sample Collected">Sample Collected</option>
+          <option value="QC Reject">QC (Quality-Control) Reject</option>
+          <option value="Lab Rejected">Lab Rejected</option>
+          <option value="Reject Notice Sent">Reject Notice Sent</option>
+          <option value="Ready to Ship">Ready to Ship</option>
+          <option value="Shipped">Shipped</option>
+          <option value="Ready for Doctor">Ready for Doctor</option>
+          <option value="Doctor Review">Doctor Review</option>
+          <option value="Signed by Doctor">Signed by Doctor</option>
+          <option value="Results Available">Results Available</option>
+        </select>
+      </div>
+      
 
 
-    <label for="insuranceType">Insurance Type:</label>
-    <input type="text" id="insuranceType" name="insuranceType" required>
 
-    <label for="testType">Test Type:</label>
-    <input type="text" id="testType" name="testType" required>
 
-    <label for="doctorService">Doctor Service:</label>
-    <input type="text" id="doctorService" name="doctorService" required>
+<!-- Outstanding Action Items -->
+<div class="col-md-6 mt-3">
+  <label for="outstandingActionItems">Outstanding Action Items:</label>
+  <input type="text" id="outstandingActionItems" name="outstandingActionItems" class="form-control" required>
+</div>
 
-    <label for="labName">Lab Name:</label>
-    <input type="text" id="labName" name="labName" required>
 
-    <label for="sampleStatus">Sample Status:</label>
-    <input type="text" id="sampleStatus" name="sampleStatus" required>
 
-    <button type="submit">Submit</button>
+    <div class="col-12 text-center mt-4">
+    <button type="submit" class="btn btn-primary btn-lg"> Submit</button>
+    </div>
 
       </form>
-      
+      </div> 
     </div>
     <% include ../partials/scripts %>
   </body>
