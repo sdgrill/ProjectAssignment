@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-
+  <%- include ./partials/head %>
 <body>
 
-  <div class="container d-flex justify-content-center mt-5">
+  <div class="container mt-5">
     <div class="text-center">
       <h1>Login Page</h1>
     </div>
 
-    <form id="loginForm">
+    <form id="loginForm" class="d-flex flex-column align-items-center">
       <div class="form-group">
         <label for="username">Username:</label>
         <input type="text" class="form-control" id="username" name="username" required>
@@ -19,10 +19,12 @@
         <input type="password" class="form-control" id="password" name="password" required>
       </div>
 
-      <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+      </div>
     </form>
   </div>
-
+  
   <script>
     function login() {
     var username = document.getElementById("username").value;
@@ -36,7 +38,11 @@
       window.location.href = "/";
     }
   }
+
   </script>
+ 
+
+<% include ./partials/scripts %>
 </body>
 
 </html>

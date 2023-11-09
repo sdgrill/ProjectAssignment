@@ -6,9 +6,17 @@
     <% include ./partials/navbar %>
 
     <div class="container">
-      <h1>Home Page</h1>
+      <h1>Welcome to the ILMP's Home Page</h1>
       
+
       
+      <% if (locals.user) { %>
+        <p>Hi <%= locals.user.firstName %>!</p>
+      <% } %>
+      <a href="/patients/details">Go to Patients</a>
+    </div>
+
+
     </div>
     <% include ./partials/scripts %>
   </body>

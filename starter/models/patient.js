@@ -13,10 +13,12 @@ const patientsSchema = new Schema({
     phoneNumber: {type: String,required: true},
     createDate: {type: Date,required: true},
     insuranceType: {type: String,required: true},
+    labName: {type: String,required: true},
     testType: {type: String,required: true},
     doctorService: {type: String,required: true},
-    labName: {type: String,required: true},
-    sampleStatus: {type: String,required: true}
+    sampleStatus: {type: String,required: true},
+    outstandingActionItems: {type: String,},
+
 });
 
 const Patient = mongoose.model('patients', patientsSchema); 
