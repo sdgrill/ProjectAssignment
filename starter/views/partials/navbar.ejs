@@ -18,14 +18,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/patients/details">Patient Details</a>
                 </li>
+                <% if(locals.user && locals.user.role === 'Admin') { %>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/users">Users</a>
+                    </li>
+                  <% } %>
             </ul>
         </div>
 
-        <!-- Separate ul for the Logout link with ml-auto -->
-        <ul class="navbar-nav ml-auto">
+        <!-- if/else to determine if user needs to login or logout -->
+        <ul class="navbar-nav">
+            <% if (locals.user) { %>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Logout</a>
+              <a class="nav-link" href="/accounts/logout">Logout</a>
             </li>
-        </ul>
+            <%} else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/login">Log in</a>
+            </li>
+            <% } %>
+          </ul>
     </div>
 </nav>

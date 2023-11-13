@@ -4,16 +4,29 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
-
-var indexRouter = require('./routes/index');
-var patientsRouter = require('./routes/patients');
-var loginRouter = require('./routes/login');
+var passport = require('passport');
+var flash = require('connect-flash');
+var bodyParser = require('body-parser');
 
 var app = express();
 
-require('dotenv').config({path: __dirname + '/.env'})
-mongoose.connect(process.env['DATABASE'])
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+app.use(bodyParser.json());
+var session = require('express-session');
 
+require('./config/passport')(passport);
+
+app.use(cookieParser()); // read cookies (needed for auth)
+
+var indexRouter = require('./routes/index');
+var patientsRouter = require('./routes/patients');
+var accountsRouter = require('./routes/accounts');
+
+require('dotenv').config({path: __dirname + '/.env'})
+
+mongoose.connect(process.env['DATABASE'])
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,9 +38,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// passport stuff
+app.use(session({
+  secret: 'devkey',
+  resave: true,
+  saveUninitialized: true,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
 app.use('/', indexRouter);
-app.use('/login' , loginRouter);
-app.use('/patients' , patientsRouter)
+app.use('/patients' , patientsRouter);
+app.use('/accounts', accountsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

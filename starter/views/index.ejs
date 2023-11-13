@@ -11,7 +11,7 @@
 
       
       <% if (locals.user) { %>
-        <p>Hi <%= locals.user.firstName %>!</p>
+        <p>Hi <%= locals.user.firstName %> <%= locals.user.lastName%> !</p>
       <% } %>
       <a href="/patients/details">Go to Patients</a>
     </div>
