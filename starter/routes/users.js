@@ -3,17 +3,17 @@ var router = express.Router();
 const authMiddleware = require('../middleware/auth');
 let User = require('../models/user');
 
-router.get('/', async function (req, res, next) {
+router.get('/', authMiddleware.ensureAuthenticated, async function (req, res, next) {
     let users = await User.find();
 
     res.render('users/index', { userData: users });
 });
 
-router.get('/create', function (req, res, next) {
+router.get('/create', authMiddleware.ensureAuthenticated, function (req, res, next) {
     res.render('users/create');
 });
 
-router.post('/create', async function (req, res, next) {
+router.post('/create', authMiddleware.ensureAuthenticated, async function (req, res, next) {
     let newUser = new User(
         {
             username: req.body.username,
@@ -35,7 +35,7 @@ router.post('/create', async function (req, res, next) {
     res.redirect('/users');
 });
 
-router.get('/update', async function (req, res, next) {
+router.get('/update', authMiddleware.ensureAuthenticated, async function (req, res, next) {
     let id = req.query._id;
 
     let user = await User.findById(id);
@@ -43,7 +43,7 @@ router.get('/update', async function (req, res, next) {
     res.render('users/edit', { userData: user });
 });
 
-router.post('/update', async function (req, res, next) {
+router.post('/update', authMiddleware.ensureAuthenticated, async function (req, res, next) {
     let id = req.body._id;
 
     let tempUser = new User();
@@ -71,7 +71,7 @@ router.post('/update', async function (req, res, next) {
     res.redirect('/users');
 });
 
-router.get('/delete', async function (req, res, next) {
+router.get('/delete', authMiddleware.ensureAuthenticated, async function (req, res, next) {
     let id = req.query._id;
 
     await User.findByIdAndDelete(id);

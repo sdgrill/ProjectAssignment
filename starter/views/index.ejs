@@ -8,14 +8,24 @@
     <div class="container">
       <h1>Welcome to the ILMP's Home Page</h1>
       
-
-      
       <% if (locals.user) { %>
-        <p>Hi <%= locals.user.firstName %> <%= locals.user.lastName%> !</p>
-      <% } %>
+        <p>Hi <%= locals.user.firstName %> <%= locals.user.lastName%>!</p>
       <a href="/patients/details">Go to Patients</a>
+
+      <% if (locals.user.role === 'Admin') { %>
+        <br>
+        <br>
+        
+      <a href="/users">Go to Users</a>
+      <% } %>
+      <% } else { %>
+        <!-- If no user is logged in, you might want to provide a login link or other content -->
+        <p>Please log in to access more features.</p>
+      <% } %>
     </div>
 
+
+    <!-- TEST TEST -->
 
     </div>
     <% include ./partials/scripts %>
