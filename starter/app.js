@@ -23,6 +23,7 @@ app.use(cookieParser()); // read cookies (needed for auth)
 var indexRouter = require('./routes/index');
 var patientsRouter = require('./routes/patients');
 var accountsRouter = require('./routes/accounts');
+var usersRouter = require('./routes/users');
 
 require('dotenv').config({path: __dirname + '/.env'})
 
@@ -57,6 +58,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/patients' , patientsRouter);
 app.use('/accounts', accountsRouter);
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

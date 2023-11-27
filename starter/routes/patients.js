@@ -1,15 +1,16 @@
 var express = require('express');
 var router = express.Router();
 const Patient = require('../models/patient')
+const authMiddleware = require('../middleware/auth');
 
-router.get('/create', async function(req, res, next) {
+router.get('/create', authMiddleware.ensureAuthenticated, async function(req, res, next) {
  
   let patientsD = await Patient.find();
 
   res.render('patients/create', {patientsData: patientsD });
 });
 
-router.post('/create', async function (req, res, next) {
+router.post('/create', authMiddleware.ensureAuthenticated, async function (req, res, next) {
   let newPatient = new Patient(
   {
     creatorId:req.body.creatorId,
@@ -46,7 +47,7 @@ router.post('/create', async function (req, res, next) {
   });
 
 
-router.get('/details', async function(req, res, next) {
+router.get('/details', authMiddleware.ensureAuthenticated, async function(req, res, next) {
 try{
     let patientsD = await Patient.find();
     res.render('patients/details', { patientsData: patientsD });
@@ -57,7 +58,7 @@ try{
 }
 });
 
-router.get('/update',  async function(req,res){
+router.get('/update', authMiddleware.ensureAuthenticated,  async function(req,res){
   let id = req.query._id;
 
   let patientsD = await Patient.findById(id);
@@ -68,7 +69,7 @@ router.get('/update',  async function(req,res){
 
 
 
-router.post('/update',  async function(req,res){
+router.post('/update', authMiddleware.ensureAuthenticated,  async function(req,res){
   let id = req.body._id;
 
   await Patient.findOneAndUpdate({_id: id}, {
@@ -92,7 +93,7 @@ router.post('/update',  async function(req,res){
   res.redirect('/patients/details');
 });
 
-router.get('/delete', async function(req, res){
+router.get('/delete', authMiddleware.ensureAuthenticated, async function(req, res){
  let id = req.query._id;
  await Patient.findByIdAndDelete(id);
  res.redirect("/patients/details");

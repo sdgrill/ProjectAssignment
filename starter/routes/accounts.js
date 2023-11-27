@@ -12,9 +12,14 @@ router.get('/signup', function (req, res) {
 });
 
 router.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
+    req.logout(function (err) {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/');
+    });
 });
+
 
 router.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/', //redirect to the secure home page
