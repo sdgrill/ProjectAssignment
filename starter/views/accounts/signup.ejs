@@ -26,10 +26,16 @@
           <label>Last Name</label>
           <input required type="text" class="form-control" name="lastName">
         </div>
+        
         <div class="form-group">
-            <label>Role</label>
-            <input required type="text" class="form-control" name="role">
-        </div>
+          <label for="role">Role</label>
+          <select required class="form-control" name="role" id="role">
+              <option value="admin">Admin</option>
+              <option value="qualityControl">Quality Control</option>
+              <option value="dataEntrySpecialist">Data Entry Specialist</option>
+          </select>
+      </div>
+      
         <div class="form-group">
           <label>Password</label>
           <input required type="password" class="form-control" name="password">

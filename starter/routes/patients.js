@@ -28,7 +28,7 @@ router.post('/create', authMiddleware.ensureAuthenticated, async function (req, 
     doctorService:req.body.doctorService,
     sampleStatus:req.body.sampleStatus,
     outstandingActionItems:req.body.outstandingActionItems,
-    
+    qcComments:req.body.qcComments,
     
   });
     
@@ -88,6 +88,7 @@ router.post('/update', authMiddleware.ensureAuthenticated,  async function(req,r
     doctorService:req.body.doctorService,
     sampleStatus:req.body.sampleStatus,
     outstandingActionItems:req.body.outstandingActionItems,
+    qcComments:req.body.qcComments,
   });
 
   res.redirect('/patients/details');

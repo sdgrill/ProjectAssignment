@@ -22,9 +22,16 @@
             <div class="form-group mb-2">
               <input type="text" class="form-control" name="email" placeholder="Email" value="<%=userData.email%>" />
             </div>
+
             <div class="form-group mb-2">
-              <input type="text" class="form-control" name="role" placeholder="Role" value="<%=userData.role%>" />
-            </div>
+              <label for="role">Role</label>
+              <select class="form-control" name="role" id="role">
+                  <option value="Admin" <% if(userData.role === 'Admin') { %> selected <% } %>>Admin</option>
+                  <option value="QualityControl" <% if(userData.role === 'Quality Control') { %> selected <% } %>>Quality Control</option>
+                  <option value="DataEntrySpecialist" <% if(userData.role === 'Data Entry Specialist') { %> selected <% } %>>Data Entry Specialist</option>
+              </select>
+          </div>
+          
             <div class="form-group mb-2">
               <p>Enter a new password to reset the user's password, otherwise leave this field blank.</p>
               <input type="password" class="form-control" name="password" placeholder="Password" />
