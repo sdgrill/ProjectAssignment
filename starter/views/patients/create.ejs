@@ -110,13 +110,18 @@
 
 
 
-
+      <% if (locals.user.role !== 'dataEntrySpecialist') { %>
 <!-- Outstanding Action Items -->
 <div class="col-md-6 mt-3">
   <label for="outstandingActionItems">Outstanding Action Items:</label>
   <input type="text" id="outstandingActionItems" name="outstandingActionItems" class="form-control" required>
 </div>
 
+<div class="col-md-6 mt-3">
+  <label for="qcComments">Quality Control Comments:</label>
+  <input type="text" id="qcComments" name="qcComments" class="form-control" value="<%=patientsData.qcComments%>"/>
+</div>
+      <% } %>
 
 
     <div class="col-12 text-center mt-4">

@@ -18,7 +18,7 @@ const patientsSchema = new Schema({
     doctorService: {type: String,required: true},
     sampleStatus: {type: String,required: true},
     outstandingActionItems: {type: String,},
-
+    qcComments: { type: String },
 });
 
 const Patient = mongoose.model('patients', patientsSchema); 

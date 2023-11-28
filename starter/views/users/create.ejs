@@ -20,9 +20,16 @@
             <div class="form-group mb-2">
               <input type="text" class="form-control" name="email" placeholder="Email" />
             </div>
+
             <div class="form-group mb-2">
-              <input type="text" class="form-control" name="role" placeholder="Role" />
-            </div>
+              <label for="role">Select Role:</label>
+              <select class="form-control" name="role" id="role">
+                  <option value="Admin">Admin</option>
+                  <option value="QualityControl">Quality Control</option>
+                  <option value="DataEntrySpecialist">Data Entry Specialist</option>
+              </select>
+          </div>
+          
             <div class="form-group mb-2">
               <input type="password" class="form-control" name="password" placeholder="Password" />
             </div>
