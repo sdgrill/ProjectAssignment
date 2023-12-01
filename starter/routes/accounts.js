@@ -12,12 +12,8 @@ router.get('/signup', function (req, res) {
 });
 
 router.get('/logout', function (req, res) {
-    req.logout(function (err) {
-        if (err) {
-            return next(err);
-        }
-        res.redirect('/');
-    });
+    req.logout();
+    res.redirect('/');
 });
 
 
