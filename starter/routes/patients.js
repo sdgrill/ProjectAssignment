@@ -2,6 +2,58 @@ var express = require('express');
 var router = express.Router();
 const Patient = require('../models/patient')
 const authMiddleware = require('../middleware/auth');
+const excel = require('exceljs');
+
+router.get('/excel-export', async function (req,res,next){
+const workbook = new excel.Workbook();
+const worksheet = workbook.addWorksheet('Patient Data')
+
+let patientsD = await Patient.find()
+
+const commonColumns = [
+ 
+  { header: 'FirstName', key: 'firstName', width: 15 },
+  { header: 'LastName', key: 'lastName', width: 15 },
+  { header: 'State', key: 'state', width: 10 },
+  { header: 'Zipcode', key: 'zipcode', width: 15 },
+  { header: 'Birth date', key: 'birthdate', width: 15 },
+  { header: 'Phone Number', key: 'phoneNumber', width: 15 },
+  { header: 'Lab Name', key: 'labName', width: 20 },
+  { header: 'Doctor Service', key: 'doctorService', width: 15 },
+  { header: 'Insurance Type', key: 'insuranceType', width: 15 },
+  { header: 'Test Type', key: 'testType', width: 15 },
+  { header: 'Sample Status', key: 'sampleStatus', width: 20 },
+  
+];
+
+const userRole = req.user.role; // Assuming user role is stored in req.user
+  const creatorColumns = (userRole !== 'dataEntrySpecialist')
+    ? [
+      { header: 'Creator ID', key: 'creatorId', width: 15 },
+      { header: 'Creator Name', key: 'creatorName', width: 20 },
+      { header: 'Create Date', key: 'createDate', width: 15 },
+      { header: 'Outstanding Action Items', key: 'outstandingActionItems', width: 40 },
+      { header: 'Quality Control Comments', key: 'qualityControlComments', width: 40 },
+    ]
+    : [];
+
+worksheet.columns = [, ...creatorColumns, ...commonColumns]
+
+worksheet.addRows(patientsD)
+
+res.setHeader(
+  'Content-Type',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  );
+  res.setHeader(
+  'Content-Disposition',
+  'attachment; filename=' + 'Patient Data.xlsx',
+  );
+  return workbook.xlsx.write(res).then(function() {
+  res.status(200).end();
+  });
+
+});
 
 router.get('/create', authMiddleware.ensureAuthenticated, async function(req, res, next) {
  
