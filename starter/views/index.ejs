@@ -11,12 +11,8 @@
       <% if (locals.user) %>
         <p>Hi <%= locals.user.firstName %> <%= locals.user.lastName%>!</p>
 
-      <!--<% if (locals.user.role === 'Admin') { %>
-      <br>
-        <a href="/users">Go to Users</a>
-      <% } %>-->
     </div>
-    </div>
+    
     <% include ./partials/scripts %>
   </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ./partials/head %>
+
+<body>
+    <% include ./partials/navbar %>
+    <div class="container" align="center" style="margin: 20px;">
+
+        <h1 style="margin-bottom: 40px;">ILMP's Help Page</h1>
+
+    </div>
+    
+    <div class="content" align="center" style="margin: 60px;">
+        <h2 style="margin-bottom: 40px;">Frequently Asked Questions</h2>
+        <p>How do I create a patient?</p>
+        <a href="/patients/create"> GO HERE!</a>
+        <br>
+        <br>
+        <p>How to create an account?</p>
+        <ul style="list-style-type: none; padding: 0;">
+            <li>Step 1: Contact Admin by Email</li>
+            <li>Step 2: Admin will give credentials</li>
+            <li>Step 3: Go to the website and Login</li>
+        </ul>
+        <br>
+        <p>How do I update my password?</p>
+        <ul style="list-style-type: none; padding: 0;">
+            <li>Step 1: Contact Admin by Email/In-Person</li>
+            <li>Step 2: Admin will update credentials</li>
+        </ul>
+    </div>
+
+<% include ./partials/scripts %>
+</body>
+</html>
