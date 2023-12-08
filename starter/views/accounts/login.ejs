@@ -8,7 +8,6 @@
       <h1>Login Page</h1>
     </div>
 
-      <!-- show any messages that come back with authentication -->
       <% if (message.length> 0) { %>
         <div class="alert alert-danger">
           <%= message %>
@@ -31,8 +30,10 @@
       </div>
     </form>
     <hr>
-    <!--leads back to the signup page-->
-    <!--<p>Need an account? <a href="/accounts/signup">Signup</a></p>-->
+    <!--leads to the signup page-->
+    <!--
+      <p>Need an account? <a href="/accounts/signup">Sign Up</a></p>
+    -->
   </div>
 <% include ../partials/scripts %>
 </body>

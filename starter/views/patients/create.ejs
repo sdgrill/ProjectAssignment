@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
   <%- include ../partials/head %>
-
-
   <body>
     <% include ../partials/navbar %>
 
@@ -81,9 +79,6 @@
           <option value="CGX">CGX</option>
       </select>
   </div>
-  
-    
-    
 
       <div class="col-md-6 mt-3">
         <label for="doctorService">Doctor Service:</label>
@@ -107,9 +102,6 @@
         </select>
       </div>
       
-
-
-
       <% if (locals.user.role !== 'dataEntrySpecialist') { %>
 <!-- Outstanding Action Items -->
 <div class="col-md-6 mt-3">
@@ -123,11 +115,9 @@
 </div>
       <% } %>
 
-
-    <div class="col-12 text-center mt-4">
+    <div class="col-12 text-right mt-4">
     <button type="submit" class="btn btn-primary btn-lg"> Submit</button>
     </div>
-
       </form>
       </div> 
     </div>

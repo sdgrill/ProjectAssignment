@@ -9,22 +9,42 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item">
+<!--commented these two out since Home menu can be accessed via Navbar brand
+added extra tabs to fill out Navbar, but they currently lead no where-->
+
+                <!--<li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
+                </li>-->
+                <!--<li class="nav-item">
                     <a class="nav-link" href="/patients/create">Create Patient</a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="/patients/details">Patient Details</a>
                 </li>
-                <% if(locals.user && locals.user.role === 'Admin') { %>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/users">Users</a>
-                    </li>
-                  <% } %>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Labs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Help</a>
+                </li>
             </ul>
         </div>
+
+        <!--moved role specific items and create patient into dropmenu-->
+        <li class="dropdown">
+            <a class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+            </a>
+              <div class="dropdown-menu">
+                <button class="dropdown-item"><a href="/patients/create">Create Patient</a></button>
+                <button class="dropdown-item"><% if(locals.user && locals.user.role === 'Admin') { %>
+                    <a href="/users">Users</a>
+                <% } %></button>
+              </div>
+        </li>
 
         <!-- if/else to determine if user needs to login or logout -->
         <ul class="navbar-nav">
@@ -34,7 +54,7 @@
             </li>
             <%} else { %>
             <li class="nav-item">
-              <a class="nav-link" href="/accounts/login">Log in</a>
+              <a class="nav-link" href="/accounts/login">Login</a>
             </li>
             <% } %>
           </ul>

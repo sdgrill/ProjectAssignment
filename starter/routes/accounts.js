@@ -16,7 +16,6 @@ router.get('/logout', function (req, res) {
     res.redirect('/');
 });
 
-
 router.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/', //redirect to the secure home page
     failureRedirect: '/accounts/signup', // redirect back to the signup page if there is an error
@@ -29,14 +28,14 @@ router.post('/login', passport.authenticate('local-login', {
     failureFlash: true // allow flash messages
 }));
 
-// makes sure a user is logged in
+// ensures a user is logged in
 function isLoggedIn(req, res, next) {
 
-    // if user is authenticated in the session, carry on 
+    // if authenticated, carry on 
     if (req.isAuthenticated())
         return next();
 
-    // if they aren't redirect them to the home page
+    // if not, redirect to the home page
     res.redirect('/');
 }
 

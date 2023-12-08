@@ -83,7 +83,7 @@ router.post('/create', authMiddleware.ensureAuthenticated, async function (req, 
     qcComments:req.body.qcComments,
     
   });
-    
+  
   try {
     await newPatient.save();
     console.log('Patient saved successfully!');
@@ -94,10 +94,7 @@ router.post('/create', authMiddleware.ensureAuthenticated, async function (req, 
     res.status(500).send('Internal Server Error');
     return; // Make sure to return to prevent further execution
 }
-    
-  
   });
-
 
 router.get('/details', authMiddleware.ensureAuthenticated, async function(req, res, next) {
 try{
@@ -106,7 +103,6 @@ try{
 } catch (err){
   console.error(err);
   res.status(500).send('Internal Server Error');
-
 }
 });
 
@@ -117,9 +113,6 @@ router.get('/update', authMiddleware.ensureAuthenticated,  async function(req,re
 
   res.render('patients/edit', {patientsData: patientsD});
 });
-
-
-
 
 router.post('/update', authMiddleware.ensureAuthenticated,  async function(req,res){
   let id = req.body._id;
