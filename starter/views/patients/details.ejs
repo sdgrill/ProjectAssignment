@@ -10,6 +10,14 @@
         <table id="patientTable" class="table table-striped table-condensed">
           <thead>
             <tr>
+
+              <!--only displays if user is DataEntrySpecialist-->
+            <% if (locals.user.role !== 'DataEntrySpecialist') { %>
+              <th>Creator ID</th>
+              <th>Creator Name</th>
+              <th>Create Date</th>
+            <% } %>
+
             <th>FirstName</th>
             <th>LastName</th>
             <th>State</th>
@@ -22,14 +30,9 @@
             <th>Test Type</th>
             <th>Sample Status</th>
 
-            <!--only displays if user is DataEntrySpecialist-->
-            <% if (locals.user.role === 'DataEntrySpecialist') { %>
-              <th>Creator ID</th>
-              <th>Creator Name</th>
-              <th>Create Date</th>
-            <% } %>
+            
             <!--only displays if user is QualityControl-->
-            <% if (locals.user.role === 'QualityControl') { %>
+            <% if (locals.user.role === 'QualityControl' || locals.user.role === 'Admin') { %>
             <th>Outstanding Action Items</th>
             <th>Quality Control Comments</th>
             <% } %>
@@ -41,6 +44,13 @@
         <tbody>
         <% for (let i = 0; i < patientsData.length; i++) { %>
           <tr>
+                <!--only displays if user is DataEntrySpecialist-->
+              <% if (locals.user.role !== 'DataEntrySpecialist') { %>
+                <td><%= patientsData[i].creatorId %></td>
+                <td><%= patientsData[i].creatorName %></td>
+                <td><%= patientsData[i].createDate %></td>
+              <% } %>
+
             <td><%= patientsData[i].firstName %></td>
             <td><%= patientsData[i].lastName %></td>
             <td><%= patientsData[i].state %></td>
@@ -53,15 +63,10 @@
             <td><%= patientsData[i].testType %></td>
             <td><%= patientsData[i].sampleStatus %></td>
 
-            <!--only displays if user is DataEntrySpecialist-->
-            <% if (locals.user.role === 'DataEntrySpecialist') { %>
-              <td><%= patientsData[i].creatorId %></td>
-              <td><%= patientsData[i].creatorName %></td>
-              <td><%= patientsData[i].createDate %></td>
-            <% } %>
+           
             
             <!--only displays if user is QualityControl-->
-            <% if (locals.user.role === 'QualityControl') { %>
+            <% if (locals.user.role === 'QualityControl' || locals.user.role === 'Admin') { %>
             <td><%= patientsData[i].outstandingActionItems %></td>
             <td><%= patientsData[i].qcComments %></td>
             <% } %>

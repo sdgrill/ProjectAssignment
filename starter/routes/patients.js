@@ -27,7 +27,7 @@ const commonColumns = [
 ];
 
 const userRole = req.user.role; // Assuming user role is stored in req.user
-  const creatorColumns = (userRole !== 'dataEntrySpecialist')
+  const creatorColumns = (userRole !== 'DataEntrySpecialist')
     ? [
       { header: 'Creator ID', key: 'creatorId', width: 15 },
       { header: 'Creator Name', key: 'creatorName', width: 20 },
@@ -86,14 +86,11 @@ router.post('/create', authMiddleware.ensureAuthenticated, async function (req, 
   
   try {
     await newPatient.save();
-    console.log('Patient saved successfully!');
-    res.redirect('/patients/details')
 } catch (err) {
     console.error(err);
-    // Handle the error appropriately, for example, send an error response
-    res.status(500).send('Internal Server Error');
-    return; // Make sure to return to prevent further execution
+    res.render('error', {message: 'Invalid data submitted'})
 }
+  res.redirect('/patients/details')
   });
 
 router.get('/details', authMiddleware.ensureAuthenticated, async function(req, res, next) {
