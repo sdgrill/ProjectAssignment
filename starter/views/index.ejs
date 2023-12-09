@@ -6,13 +6,33 @@
     <% include ./partials/navbar %>
 
     <div class="container">
-      <h1>Welcome to the ILMP's Home Page</h1>
-      
-      <% if (locals.user) %>
-        <p>Hi <%= locals.user.firstName %> <%= locals.user.lastName%>!</p>
+      <!-- Hero Section -->
+      <div class="jumbotron">
+        <h1 class="display-4">Welcome to the ILMP - Interactive Lab Management Platform</h1>
+        <% if (locals.user) { %>
+          <p class="lead">Hi <%= locals.user.firstName %> <%= locals.user.lastName %>!</p>
+        <% } %>
+        <hr class="my-4">
+        <p class="lead">Learn about the creator's of the ILMP</p>
+        <a class="btn btn-primary btn-lg" href="/creators" role="button">Learn more</a>
+      </div>
 
+      
+
+      <!-- Featured Content Section -->
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <h2>Latest Lab Innovations</h2>
+          <p>Stay ahead with the latest advancements in lab management </p>
+        </div>
+        <div class="col-md-6">
+          <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Pittsburg_State_Gorilla_logo.svg" alt="ILMP Logo" class="img-fluid">
+        </div>
+      </div>
     </div>
     
+
+
     <% include ./partials/scripts %>
   </body>
 </html>
