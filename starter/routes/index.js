@@ -12,5 +12,7 @@ router.get('/help', authMiddleware.ensureAuthenticated, function(req, res, next)
   res.render('help', { title: 'Help Page' });
 });
 
-
+router.get('/creators', authMiddleware.ensureAuthenticated, function(req, res, next) {
+  res.render('creators', { title: 'Creator Page' });
+});
 module.exports = router;
